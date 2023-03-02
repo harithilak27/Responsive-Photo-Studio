@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///C:/Users/DELL/Downloads/form.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<style>
+body
+{
+	background-image: linear-gradient(90deg, #030972 20%, #050a90 20%, #0a0eae 20%, #080dcc 20%, #010854 20%);
+    font-weight:bold;
+}
+
+h3
+{
+	color:#FFFFFF;
+    text-align:center;
+    font-family:Verdana;
+}
+
+.details{
+	display: block;
+ 	width: 200px;
+}
+
+input
+{
+width:98%;
+}
+
+
+table, tr, td
+{
+	width:50%;
+  	margin-left: auto;
+  	margin-right: auto;
+    border-radius: 5px;
+  	padding: 7px;
+  	background-color: #FFFFFF;
+  	color: #08088A;
+}
+
+td
+{
+	border: 1px #08088A solid;
+}
+
+.container
+{
+	background-color:white;
+}
+
+#btn
+{
+	color:#08088A;
+    margin-left:45%;
+    margin-right:auto;
+    font-weight:bold;
+}
+
+
+
+.title
+{
+	color:#08088A;
+    text-align:center;
+    
+  	width:638px;
+  	margin-left: 342px;
+  	
+    
+    border: 1px #08088A solid;
+    border-radius: 5px;
+  	padding: 5px;
+  	background-color: #FFFFFF;
+}
+
+#result
+{
+	color:#FFFFFF;
+    text-align:center;
+    font-family:Verdana;  
+}
+</style>
+
+
+
+</head>
+<body>
+<h3>One-Stop Mobile Accessories</h3>
+<div class="container">
+<br>
+<div class="title">Personal Details </div>
+
+<table>
+        <form></form>
+            <tbody><tr>
+                <td>
+                    <label class="details">
+                        Name
+                    </label>
+                </td>
+                <td><input type="text" id="name" required="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="details">
+                       	Phone Number
+                    </label>
+                </td>
+                <td><input type="tel" id="phone" pattern="[789]\d{9}" required="">
+                </td>
+            </tr>
+               
+            <tr>
+                <td><label class="details">
+                        Email
+                    </label>
+                </td>
+                <td><input type="email" id="email" required="">
+                </td>
+            </tr>
+           
+           <tr>
+           		<td><label class="details">Delivery Address</label>
+                </td>
+                <td><textarea id="address" rows="4" cols="50" required=""></textarea>
+                </td>
+           </tr>
+        
+    </tbody></table>
+    <div class="title">Combo Offers (Save upto Rs. 400 on each combo !!)</div>
+    <table>
+    	<form></form>
+        	<tbody><tr>
+            	<td class="combo">
+                	<input type="checkbox" id="option1" name="checkbox" value="799">
+  					<label>SanDisk 32GB micro SDHC Memory Card + iXCC Micro- USB cable</label>
+                </td>
+                <td>
+                Rs.799/- only
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="combo">
+                	<input type="checkbox" id="option2" name="checkbox" value="899">
+  					<label>Sandisk Cruzer Blade 32 GB Pen Drive + Samsung Type B 15W Travel Adaptor</label>
+                </td>
+                <td>
+                Rs.899/- only
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="combo">
+                	<input type="checkbox" id="option3" name="checkbox" value="1199">
+  					<label>Sony WF-1000XM3 Head Phone + SanDisk 16GB micro SDHC Memory Card
+</label>
+                </td>
+                <td>
+                Rs.1199/- only
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="combo">
+                	<input type="checkbox" id="option4" name="checkbox" value="299">
+  					<label>Mpow Car Phone Mount + Zebroni 1 Amp Turbo Car Mobile Charger
+</label>
+                </td>
+                <td>
+                Rs.299/- only
+                </td>
+            </tr>
+            
+            <tr>
+            	<td class="combo">
+                	<input type="checkbox" id="option5" name="checkbox" value="999">
+  					<label>Tribit XSound Go Bluetooth Speaker + Mpow Car Phone Mount</label>
+                </td>
+                <td>
+                Rs.999/- only
+                </td>
+            </tr>
+        
+    </tbody></table>
+    <div class="title">
+    * Enjoy 20% discount on purchasing combos worth 2000 and above
+    </div><br>
+    
+</div>
+<button type="button" id="btn" onclick="validate()">PLACE ORDER </button>
+<div id="result">
+	
+</div>
+
+
+<script>
+var name_pattern = /[a-zA-Z]/g
+var phone_pattern = /[789]\d{9}/
+var email_pattern = /[a-z@gmail.com]/g 
+
+const btn = document.getElementById("btn").addEventListener('click', validate);
+
+
+function validate() { 
+var name = document.getElementById("name").value;
+var phone = document.getElementById("phone").value;
+var email = document.getElementById("email").value;
+var address = document.getElementById("address").value;
+var result = document.getElementById("result");
+
+let checkboxes = document.querySelectorAll('input[name="checkbox"]:checked');;
+let total = 0;
+checkboxes.forEach((checkbox) => {
+    total = total + parseInt(checkbox.value);
+});
+console.log(total);
+
+if(name.match(name_pattern) && phone.match(phone_pattern) && email.match(email_pattern) && phone.match(phone_pattern) && total >= 1){
+    document.getElementById("result").innerHTML = `Order has been placed successfully. You are requested to pay Rs . ${total} enjoy the shopping .`;
+}else {
+    document.getElementById("result").innerHTML = "fill out every details";
+}
+}
+</script>
+
+
+
+</body></html>
